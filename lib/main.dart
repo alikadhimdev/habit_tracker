@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:habit_tracker/screens/main_screen.dart';
 import 'package:habit_tracker/screens/login_screen.dart';
+import 'package:habit_tracker/screens/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'عاداتي',
       locale: const Locale("ar", "SA"),
       supportedLocales: const [Locale("ar", "SA"), Locale("en", "US")],
@@ -44,8 +47,12 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      initialRoute: LoginScreen.screenRoute,
-      routes: {LoginScreen.screenRoute: (context) => LoginScreen()},
+      initialRoute: MainScreen.screenRoute,
+      routes: {
+        MainScreen.screenRoute: (context) => MainScreen(),
+        LoginScreen.screenRoute: (context) => LoginScreen(),
+        RegisterScreen.screenRoute: (context) => RegisterScreen(),
+      },
     );
   }
 }

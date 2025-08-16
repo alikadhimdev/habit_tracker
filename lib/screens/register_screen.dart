@@ -1,25 +1,27 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/screens/register_screen.dart';
+import 'package:habit_tracker/screens/login_screen.dart';
 import 'package:habit_tracker/widgets/build_button.dart';
 import 'package:habit_tracker/widgets/text_input.dart';
-import 'main_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-  static const screenRoute = "/login";
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+  static const screenRoute = "/register";
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  late String username;
   late String email;
   late String password;
 
-  void _handleLogin() {
-    if (email == "admin" && password == "admin") {
-      Navigator.pushReplacementNamed(context, MainScreen.screenRoute);
-    }
+  void _handleRegister() {
+    print(username);
+    print(email);
+    print(password);
   }
 
   @override
@@ -43,6 +45,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 20),
             TextInputBuild(
+              hintText: "اسم المستخدم",
+              icon: Icons.person_2_outlined,
+              handleChange: (value) => username = value,
+            ),
+            SizedBox(height: 10),
+            TextInputBuild(
               hintText: "البريد الالكتروني",
               icon: Icons.email,
               handleChange: (value) => email = value,
@@ -55,8 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 20),
             BuildButton(
-              text: "دخول",
-              onPressed: _handleLogin,
+              text: "تسجيل جديد",
+              onPressed: _handleRegister,
               color: Theme.of(context).colorScheme.primary,
             ),
             SizedBox(height: 10),
@@ -64,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 Navigator.pushReplacementNamed(
                   context,
-                  RegisterScreen.screenRoute,
+                  LoginScreen.screenRoute,
                 );
               },
 
@@ -88,17 +96,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 }),
               ),
 
-              child: Text(" ليس لديك حساب؟ انشئ حساب جديد "),
+              child: Text("لديك حساب بالفعل؟ تسجيل الدخول"),
             ),
             SizedBox(height: 40),
             BuildButton(
-              text: " الدخول باستخدام FACEBOOK",
+              text: " التسجيل باستخدام FACEBOOK",
               onPressed: () {},
               color: Theme.of(context).colorScheme.primary,
             ),
             SizedBox(height: 10),
             BuildButton(
-              text: " الدخول باستخدام GOOGLE",
+              text: " التسجيل باستخدام GOOGLE",
               onPressed: () {},
               color: Theme.of(context).colorScheme.primary,
             ),
