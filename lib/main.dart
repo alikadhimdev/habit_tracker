@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:habit_tracker/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,24 +44,8 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("تتبع العادات")),
-      body: Center(
-        child: Text(
-          "تتبع العادات بشكل ممتاز",
-          style: Theme.of(context).textTheme.labelSmall,
-        ),
-      ),
+      initialRoute: LoginScreen.screenRoute,
+      routes: {LoginScreen.screenRoute: (context) => LoginScreen()},
     );
   }
 }
