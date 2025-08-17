@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:habit_tracker/screens/habit_details.dart';
 import 'package:habit_tracker/screens/main_screen.dart';
 import 'package:habit_tracker/screens/login_screen.dart';
 import 'package:habit_tracker/screens/register_screen.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         MainScreen.screenRoute: (context) => MainScreen(),
         LoginScreen.screenRoute: (context) => LoginScreen(),
         RegisterScreen.screenRoute: (context) => RegisterScreen(),
+        HabitDetails.screenRoute: (context) => HabitDetails(),
       },
     );
   }
