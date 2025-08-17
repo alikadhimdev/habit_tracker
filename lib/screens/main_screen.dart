@@ -3,6 +3,7 @@ import 'package:habit_tracker/screens/calender_screen.dart';
 import 'package:habit_tracker/screens/home_screen.dart';
 import 'package:habit_tracker/screens/setting_screen.dart';
 import 'package:habit_tracker/screens/stats_screen.dart';
+import '../widgets/add_habit.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -33,7 +34,10 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: Text("تتبع العادات"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.add, size: 30)),
+          IconButton(
+            onPressed: () => habitsDialog(context),
+            icon: Icon(Icons.add, size: 30),
+          ),
         ],
       ),
       body: _screens[_currentIndex],

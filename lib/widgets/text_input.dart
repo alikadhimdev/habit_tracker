@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class TextInputBuild extends StatelessWidget {
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final ValueChanged<String> handleChange;
 
   const TextInputBuild({
     super.key,
     required this.hintText,
-    required this.icon,
+    this.icon,
     required this.handleChange,
   });
 
@@ -24,11 +24,6 @@ class TextInputBuild extends StatelessWidget {
         prefixIconColor: Colors.grey,
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue, width: 2),
-          borderRadius: BorderRadius.circular(20),
-        ),
       ),
     );
   }
