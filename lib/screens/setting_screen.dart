@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/main.dart';
+import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -8,11 +10,12 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  String? _themeChoose = "system";
   bool _notifications = false;
 
   @override
   Widget build(BuildContext context) {
+    var appData = Provider.of<AppData>(context, listen: false);
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
 
@@ -64,18 +67,23 @@ class _SettingScreenState extends State<SettingScreen> {
             trailing: DropdownButton(
               style: Theme.of(context).textTheme.bodySmall,
               items: [
-                DropdownMenuItem(value: "light", child: Text("الفاتح")),
-                DropdownMenuItem(value: "dark", child: Text("المظلم")),
-                DropdownMenuItem(value: "system", child: Text("النظام")),
+                DropdownMenuItem(value: ThemeMode.light, child: Text("الفاتح")),
+                DropdownMenuItem(value: ThemeMode.dark, child: Text("المظلم")),
+                DropdownMenuItem(
+                  value: ThemeMode.system,
+                  child: Text("النظام"),
+                ),
               ],
               icon: SizedBox(),
               underline: SizedBox(),
               isDense: true,
-              value: _themeChoose,
+              value: appData.appTheme,
               onChanged: (value) {
-                setState(() {
-                  _themeChoose = value;
-                });
+                if (value != null) {
+                  setState(() {
+                    appData.changeTheme(value);
+                  });
+                }
               },
             ),
           ),

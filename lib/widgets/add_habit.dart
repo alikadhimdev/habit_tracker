@@ -99,7 +99,7 @@ Future<void> habitsDialog(BuildContext context) {
 
                     SizedBox(height: 5),
                     Container(
-                      height: 50,
+                      height: 60,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: colorsList.length,
@@ -224,7 +224,15 @@ Future<void> habitsDialog(BuildContext context) {
                             ).colorScheme.onPrimary,
                           ),
                           onPressed: () {},
-                          child: Text("حفظ"),
+                          child: Text(
+                            "حفظ",
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
+                                ),
+                          ),
                         ),
                       ),
                       SizedBox(width: 10),
@@ -241,7 +249,13 @@ Future<void> habitsDialog(BuildContext context) {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text("الغاء"),
+                          child: Text(
+                            "الغاء",
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.onError,
+                                ),
+                          ),
                         ),
                       ),
                     ],
@@ -278,7 +292,7 @@ class ColorItem extends StatelessWidget {
             color: isSelected
                 ? Theme.of(context).colorScheme.primary
                 : Colors.transparent,
-            width: 2,
+            width: 4,
           ),
         ),
         child: Container(
@@ -288,7 +302,7 @@ class ColorItem extends StatelessWidget {
             shape: BoxShape.circle,
             color: color,
 
-            border: BoxBorder.all(color: Colors.white, width: 2),
+            border: BoxBorder.all(color: Colors.transparent, width: 2),
           ),
         ),
       ),
