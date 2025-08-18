@@ -60,8 +60,9 @@ class _SettingScreenState extends State<SettingScreen> {
           ListTile(
             dense: true,
             contentPadding: EdgeInsets.zero,
-            title: Text("الثيم", style: Theme.of(context).textTheme.titleSmall),
+            title: Text("الثيم", style: Theme.of(context).textTheme.bodySmall),
             trailing: DropdownButton(
+              style: Theme.of(context).textTheme.bodySmall,
               items: [
                 DropdownMenuItem(value: "light", child: Text("الفاتح")),
                 DropdownMenuItem(value: "dark", child: Text("المظلم")),
@@ -83,7 +84,7 @@ class _SettingScreenState extends State<SettingScreen> {
             dense: true,
             title: Text(
               "الاشعارات",
-              style: Theme.of(context).textTheme.titleSmall,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             trailing: Transform.scale(
               scale: .6,
@@ -110,7 +111,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
             title: Text(
               "النسخ الاحتياطي والمزامنة",
-              style: Theme.of(context).textTheme.titleSmall,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             trailing: Icon(Icons.cloud_circle),
           ),

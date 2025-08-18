@@ -4,13 +4,31 @@ import 'package:habit_tracker/screens/habit_details.dart';
 import 'package:habit_tracker/screens/main_screen.dart';
 import 'package:habit_tracker/screens/login_screen.dart';
 import 'package:habit_tracker/screens/register_screen.dart';
+import './theme.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+var _appTheme = ThemeMode.system;
+
+class _MyAppState extends State<MyApp> {
+  void changeTheme(String theme) {
+    if (theme == "light") {
+      _appTheme = ThemeMode.light;
+    } else if (_appTheme == "dark") {
+      _appTheme = ThemeMode.dark;
+    } else {
+      _appTheme = ThemeMode.system;
+    }
+  }
 
   // This widget is the root of your application.
   @override
@@ -26,29 +44,10 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
 
-      theme: ThemeData(
-        colorScheme: const ColorScheme(
-          brightness: Brightness.light,
-          primary: Color(0xFF1E88E5), // أزرق أساسي
-          onPrimary: Colors.white, // نص فوق الأزرق
-          secondary: Color(0xFFFF7043), // برتقالي دافئ
-          onSecondary: Colors.white,
-          surface: Colors.white, // خلفيات رئيسية وبطاقات
-          surfaceTint: Color(0xFFF7F9FC), // لمسة خفيفة للخلفية الفاتحة
-          onSurface: Color(0xFF1A1A1A), // نصوص داكنة
-          error: Color(0xFFD32F2F), // لون الخطأ
-          onError: Colors.white,
-        ),
-
-        fontFamily: "Cairo",
-        appBarTheme: AppBarTheme(
-          color: Colors.blue,
-          foregroundColor: Colors.white,
-          elevation: 5,
-          centerTitle: true,
-        ),
-      ),
-      initialRoute: MainScreen.screenRoute,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: _appTheme,
+      initialRoute: RegisterScreen.screenRoute,
       routes: {
         MainScreen.screenRoute: (context) => MainScreen(),
         LoginScreen.screenRoute: (context) => LoginScreen(),

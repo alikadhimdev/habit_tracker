@@ -35,9 +35,9 @@ Future<void> habitsDialog(BuildContext context) {
 
   List<String> frequencyList = ["يوميا", "أسبوعيا", "شهريا"];
 
-  int? _selectedIconIndex;
-  int? _selectedColor;
-  int? _selectedFrequency;
+  int _selectedIconIndex = 0;
+  int _selectedColor = 0;
+  int _selectedFrequency = 0;
   TimeOfDay? _selectedTime;
   bool _timeSwitch = false;
   return showDialog(
@@ -61,7 +61,10 @@ Future<void> habitsDialog(BuildContext context) {
                       handleChange: (value) {},
                     ),
                     SizedBox(height: 5),
-                    Text("الايقونة"),
+                    Text(
+                      "الايقونة",
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
                     SizedBox(height: 5),
 
                     Container(
@@ -89,7 +92,10 @@ Future<void> habitsDialog(BuildContext context) {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text("اللون"),
+                    Text(
+                      "اللون",
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
 
                     SizedBox(height: 5),
                     Container(
@@ -115,7 +121,10 @@ Future<void> habitsDialog(BuildContext context) {
                     ),
 
                     SizedBox(height: 10),
-                    Text("التكرار"),
+                    Text(
+                      "التكرار",
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
 
                     SizedBox(height: 5),
                     Container(
@@ -156,7 +165,10 @@ Future<void> habitsDialog(BuildContext context) {
                     Container(
                       child: ListTile(
                         contentPadding: EdgeInsets.all(0),
-                        title: Text("تذكير"),
+                        title: Text(
+                          "تذكير",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                         subtitle: Text("اختيار وقت للتذكير"),
                         trailing: Transform.scale(
                           scale: .7,
@@ -301,8 +313,8 @@ class IconCardItem extends StatelessWidget {
       onTap: onTap,
       child: Card(
         color: isSelected
-            ? Colors.blue
-            : Theme.of(context).colorScheme.surfaceTint,
+            ? Theme.of(context).colorScheme.surfaceTint
+            : Theme.of(context).colorScheme.onPrimary,
         elevation: 3,
         child: Icon(
           size: 18,

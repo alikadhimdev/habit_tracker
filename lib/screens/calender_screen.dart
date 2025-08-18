@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class CalenderScreen extends StatelessWidget {
+class CalenderScreen extends StatefulWidget {
   CalenderScreen({super.key});
 
-  final List<String> _filtersName = ["جميع الفلاتر", "التمارين", "القراءة"];
+  @override
+  State<CalenderScreen> createState() => _CalenderScreenState();
+}
+
+class _CalenderScreenState extends State<CalenderScreen> {
+  List<String> _filtersName = ["جميع الفلاتر", "التمارين", "القراءة"];
+  int _selectedFilter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +21,21 @@ class CalenderScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("الفلاتر"),
+            Text("الفلاتر", style: Theme.of(context).textTheme.titleMedium),
             SizedBox(height: 10),
             Container(
               height: 30,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: _filtersName.length,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _selectedFilter = index;
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         vertical: 5,
@@ -34,11 +44,18 @@ class CalenderScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      backgroundColor: _selectedFilter == index
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.onPrimary,
                     ),
 
                     child: Text(
                       _filtersName[index],
-                      style: TextStyle(fontSize: 10),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: _selectedFilter == index
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -53,13 +70,13 @@ class CalenderScreen extends StatelessWidget {
             ),
 
             SizedBox(height: 10),
-            Text("التقدم", style: Theme.of(context).textTheme.headlineSmall),
+            Text("التقدم", style: Theme.of(context).textTheme.titleMedium),
             SizedBox(height: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("التقدم الاسبوعي"),
-                Text("60%", style: Theme.of(context).textTheme.displaySmall),
+                Text("60%", style: Theme.of(context).textTheme.headlineLarge),
                 Container(
                   child: Row(
                     children: [

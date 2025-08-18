@@ -15,7 +15,10 @@ class HabitDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text("تمارين صباحية"),
+              Text(
+                "تمارين صباحية",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               Text("روتين تمارين يومية لزيادة طاقتك وتركيزك"),
               Text("التقدم"),
               TableCalendar(

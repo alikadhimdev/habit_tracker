@@ -7,6 +7,7 @@ import '../widgets/add_habit.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
   static const screenRoute = "/main";
 
   @override
@@ -21,26 +22,28 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  final List<Widget> _screens = [
-    HomeScreen(),
-    CalenderScreen(),
-    StatsScreen(),
-    SettingScreen(),
+  final List<Map<String, dynamic>> _screens = [
+    {"screen": HomeScreen(), "title": "تتبع العادات"},
+    {"screen": CalenderScreen(), "title": "التقويم"},
+    {"screen": StatsScreen(), "title": "الاحصاءات"},
+    {"screen": SettingScreen(), "title": "الاعدادات"},
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("تتبع العادات"),
+        title: Text(_screens[_currentIndex]["title"]),
         actions: [
-          IconButton(
-            onPressed: () => habitsDialog(context),
-            icon: Icon(Icons.add, size: 30),
-          ),
+          _currentIndex == 0
+              ? IconButton(
+                  onPressed: () => habitsDialog(context),
+                  icon: Icon(Icons.add, size: 30),
+                )
+              : SizedBox(),
         ],
       ),
-      body: _screens[_currentIndex],
+      body: _screens[_currentIndex]["screen"],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,

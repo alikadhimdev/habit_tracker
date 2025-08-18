@@ -17,20 +17,22 @@ class ActiveHabitCard extends StatelessWidget {
               children: [
                 Text(
                   "الروتين الصباحي",
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-                Text("تمارين", style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 2),
+                Text("تمارين", style: Theme.of(context).textTheme.titleMedium),
+                const SizedBox(height: 2),
+
                 Text(
                   "30 دقيقة من الكارديو",
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
                 Card(
-                  color: Theme.of(context).colorScheme.surfaceTint,
-                  elevation: 4,
+                  elevation: 2,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,
